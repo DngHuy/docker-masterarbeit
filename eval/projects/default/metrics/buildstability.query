@@ -1,0 +1,28 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        { "term": { "projectName.keyword": { "value": "{{project}}", "case_insensitive": true } } },
+        { "term": { "stage.keyword": { "value": "build" } } }
+      ]
+    }
+  },
+  "aggs": {
+    "build_failed": {
+      "filter": {
+        "bool": {
+          "filter": [
+            {
+              "bool": {
+                "must": [
+                  { "term": { "status.keyword": { "value": "failed" } } }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

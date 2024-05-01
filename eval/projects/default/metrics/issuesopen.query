@@ -1,0 +1,53 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        { "term": { "projectName.keyword": { "value": "{{project}}", "case_insensitive": true } } },
+        { "term": { "labels": { "value": "SPRINT", "case_insensitive": true} } }
+      ],
+      "should" : [
+        { "term": { "iterationState.keyword": { "value": "CURRENT", "case_insensitive": true } } }
+      ],
+      "minimum_should_match": 0
+    }
+  },
+  "aggs": {
+    "0": {
+      "terms": {
+        "field": "projectName.keyword" ,
+        "order": { "_key": "desc" }
+      },
+      "aggs": {
+        "progress": {
+          "filter": {
+            "bool": {
+              "must": [
+                {
+                  "query_string": {
+                    "query": "(labels:/bearbeitung/ OR labels:/work/ OR labels:/progress/ OR labels:/arbeit/) AND state:opened",
+                    "analyze_wildcard": true
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "todo": {
+          "filter": {
+            "bool": {
+              "must": [
+                {
+                  "query_string": {
+                    "query": "(labels:/offen/ OR labels:/to-do/ OR labels:/todo/ OR labels:/to do/) AND state:opened",
+                    "analyze_wildcard": true
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

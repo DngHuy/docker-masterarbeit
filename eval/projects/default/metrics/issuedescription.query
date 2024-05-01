@@ -1,0 +1,26 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must" : [
+        { "term": { "projectName.keyword": { "value": "{{project}}", "case_insensitive": true } } }
+      ]
+    }
+  },
+  "aggs": {
+    "good": {
+      "filter": {
+        "bool": {
+          "must": [
+            {
+              "query_string": {
+                "query": "description:/wer/ OR description:/akzeptanzkriterien/ ",
+                "analyze_wildcard": true
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

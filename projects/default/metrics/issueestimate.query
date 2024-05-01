@@ -1,0 +1,33 @@
+{
+  "size" : 0,
+  "query": {
+    "bool": {
+      "must" : [
+        { "term": { "projectName.keyword": { "value": "{{project}}", "case_insensitive": true } } }
+      ]
+    }
+  },
+  "aggs": {
+    "good": {
+      "filter": {
+        "bool": {
+          "filter": [
+            {
+              "bool": {
+                "should": [
+                  {
+                    "range": {
+                      "timeEstimate": {
+                        "gt": "0"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

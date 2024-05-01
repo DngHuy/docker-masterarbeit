@@ -1,0 +1,23 @@
+{
+  "size": 0,
+  "query": {
+      "bool": {
+        "must": [
+          { "term" : { "snapshotDate" : "{{evaluationDate}}" } },
+          { "term": { "projectName.keyword": { "value": "{{project}}", "case_insensitive": true } } }
+        ]
+      }
+    },
+  "aggs": {
+    "total_docs": {
+      "cardinality": {
+        "field": "key.keyword"
+      }
+    },
+    "blocking": {
+      "filter": {
+        "terms": { "severity.keyword": ["BLOCKER", "CRITICAL"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+	"query": {
+    	"bool": {
+			"must" : [
+        		{ "term" : { "bcKey" : "{{bcKey}}" } },
+          		{ "range" : { "snapshot_date" : { "lte" : "{{evaluationDate}}", "format": "yyyy-MM-dd" } } }
+      		]
+		}
+  	},
+	"size": 1,
+	"sort": [
+    	{
+			"snapshot_date": {
+				"order": "desc"
+      		}
+    	}
+	]
+}

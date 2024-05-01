@@ -1,0 +1,19 @@
+{
+  "size" : 0,
+  "query": {
+    "bool": {
+      "must": [
+        { "term" : { "bcKey" : "{{bcKey}}" } },
+        { "term" : { "snapshot_date" : "{{lastSnapshotDate}}" } },
+        { "term" : { "qualifier" : "fil" } }
+      ]
+    }
+  },
+  "aggs": {
+    "numberOfDistinctFilesInSnapshot": {
+      "cardinality": {
+        "field": "path"
+      }
+    }
+  }
+}

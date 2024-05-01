@@ -1,0 +1,28 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        { "term": { "projectName.keyword": { "value": "{{project}}", "case_insensitive": true } } },
+        { "term": { "labels": { "value": "SPRINT", "case_insensitive": true} } },
+        {
+          "query_string": {
+            "query": "(labels:/done/ OR labels:/fertig/ ) AND state:closed ",
+            "analyze_wildcard": true
+          }
+        }
+      ],
+      "should" : [
+        { "term": { "iterationState.keyword": { "value": "CURRENT", "case_insensitive": true } } }
+      ],
+      "minimum_should_match": 0
+    }
+  },
+ "aggs": {
+    "sp": {
+      "sum": {
+        "field": "storyPoints"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+
+  "size" : 0,
+  
+  "query": {
+    "bool": {
+      "must": [
+        {  "term": { "evaluationDate" : "{{evaluationDate}}" } },
+        {  "term": { "project" : "{{project}}" } },
+        {  "term": { "targetType": "{{targetType}}" } },
+        {  "term": { "targetId": "{{targetId}}" } }
+      ]
+    }
+  },
+  
+  "aggs": {
+  
+    "values": {
+      "sum": {
+        "field": "value"
+      }
+    },
+    
+    "weights" : {
+      "sum": {
+        "field": "weight"
+      }
+    }
+    
+  }
+  
+}
