@@ -8,7 +8,7 @@
         {  "term": { "evaluationDate" : "{{evaluationDate}}" } },
         {  "term": { "project" : "{{project}}" } },
         {  "term": { "targetType": "{{targetType}}" } },
-        {  "term": { "targetId": "{{targetId}}" } }
+        {  "term": { "targetId.keyword": "{{targetId}}" } }
       ]
     }
   },

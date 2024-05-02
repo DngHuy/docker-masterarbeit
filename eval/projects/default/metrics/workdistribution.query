@@ -24,7 +24,7 @@
    "aggs":{
       "total_docs_count":{
          "cardinality":{
-            "field":"id"
+            "field":"id.keyword"
          }
       },
       "users":{

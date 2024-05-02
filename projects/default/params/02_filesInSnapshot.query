@@ -3,8 +3,8 @@
   "query": {
     "bool": {
       "must": [
-        { "term" : { "bcKey" : "{{bcKey}}" } },
-        { "term" : { "snapshot_date" : "{{lastSnapshotDate}}" } },
+        { "term" : { "bcKey.keyword" : "{{bcKey}}" } },
+        { "term" : { "snapshotDate" : "{{lastSnapshotDate}}" } },
         { "term" : { "qualifier" : "fil" } }
       ]
     }
@@ -12,7 +12,7 @@
   "aggs": {
     "numberOfDistinctFilesInSnapshot": {
       "cardinality": {
-        "field": "path"
+        "field": "path.keyword"
       }
     }
   }

@@ -18,7 +18,7 @@
       "filter": {
         "script": {
           "script": {
-            "source": "Math.abs(doc['totalTimeSpent'].value - doc['time_Estimate'].value) <= ({{accuracy.threshold}} * doc['timeEstimate'].value) / 100"
+            "source": "Math.abs(doc['totalTimeSpent'].value - doc['timeEstimate'].value) <= ({{accuracy.threshold}} * doc['timeEstimate'].value) / 100"
           }
         }
       }

@@ -91,6 +91,21 @@ services:
       ELASTICSEARCH_PORT: 9200
     restart: unless-stopped
 
+  gitlab:
+    platform: linux/amd64
+    image: huydng/gitlab-service:latest
+    environment:
+      GITLAB_URL: ${GITLAB_URL:-}
+      GITLAB_TOKEN: ${GITLAB_TOKEN:-}
+      GITLAB_USERNAME: ${GITLAB_USERNAME:-}
+      GITLAB_PASSWORD: ${GITLAB_PASSWORD:-}
+      GITLAB_WEBHOOK: ${GITLAB_WEBHOOK:-}
+
+      ELASTICSEARCH_APIKEY: ${ELASTICSEARCH_APIKEY:-}
+      ELASTICSEARCH_IP: ${ELASTICSEARCH_IP:-}
+      ELASTICSEARCH_PORT: 9200
+    restart: unless-stopped
+
   eval:
     platform: linux/amd64
     build:
