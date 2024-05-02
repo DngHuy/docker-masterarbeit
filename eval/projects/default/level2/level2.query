@@ -7,9 +7,13 @@
       "must": [
         {  "term": { "evaluationDate" : "{{evaluationDate}}" } },
         {  "term": { "project" : "{{project}}" } },
-        {  "term": { "targetType": "{{targetType}}" } },
-        {  "term": { "targetId.keyword": "{{targetId}}" } }
-      ]
+        {  "term": { "targetType": "{{targetType}}" } }
+      ],
+     "should": [
+       {  "term": { "targetId": "{{targetId}}" } },
+       {  "term": { "targetId.keyword": "{{targetId}}" } }
+     ],
+     "minimum_should_match": 1
     }
   },
   
