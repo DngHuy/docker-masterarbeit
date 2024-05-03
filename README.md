@@ -8,28 +8,30 @@ Docker Compose to start the respective services.
     * [Host setup](#host-setup)
       * [Windows](#windows)
       * [macOS](#macos)
+    * [.env file](#env-file)
     * [Bringing up the stack](#bringing-up-the-stack)
     * [Initial setup for Elasticsearch and Kibana](#initial-setup-for-elasticsearch-and-kibana)
       * [Setting up user authentication](#setting-up-user-authentication)
       * [Injecting data](#injecting-data)
+      * [Create the API Key for Elasticsearch](#create-the-api-key-for-elasticsearch)
     * [Setup for SonarQube](#setup-for-sonarqube)
       * [Generate Access Tokens](#generate-access-tokens)
     * [Setup for Gitlab-Service](#setup-for-gitlab-service)
     * [Setup for Sonar-Service](#setup-for-sonar-service)
-      * [Env file](#env-file)
+      * [Env file](#env-file-1)
       * [Local analysis](#local-analysis)
       * [Maven](#maven)
     * [Docker Image](#docker-image)
       * [Evaluation for a specific date](#evaluation-for-a-specific-date)
     * [Setup for Eval-Service](#setup-for-eval-service)
-      * [Env file](#env-file-1)
+      * [Env file](#env-file-2)
       * [Evaluation for a specific date](#evaluation-for-a-specific-date-1)
       * [Configuration](#configuration)
-    * [projects/default/project.properties](#projectsdefaultprojectproperties)
-    * [projects/default/params](#projectsdefaultparams)
-    * [projects/default/metrics](#projectsdefaultmetrics)
-    * [projects/default/level2s.properties](#projectsdefaultlevel2sproperties)
-    * [projects/default/level3s.properties](#projectsdefaultlevel3sproperties)
+        * [projects/default/project.properties](#projectsdefaultprojectproperties)
+        * [projects/default/params](#projectsdefaultparams)
+        * [projects/default/metrics](#projectsdefaultmetrics)
+        * [projects/default/level2s.properties](#projectsdefaultlevel2sproperties)
+        * [projects/default/level3s.properties](#projectsdefaultlevel3sproperties)
   * [Source](#source)
 <!-- TOC -->
 
@@ -414,7 +416,7 @@ To add more projects copy the whole 'default' folder and configure the `project.
     |   eval.properties
 ```
 
-### projects/default/project.properties
+##### projects/default/project.properties
 This property file is a special case and acts as a replacement to then usual `.env` file.  
 Replace the value for:
 - `project.name` with the actual name of the project
@@ -476,7 +478,7 @@ level3s.index.type=level3s
 onError=set0
 ```
 
-### projects/default/params
+##### projects/default/params
 Eval-Service is a tool designed to facilitate project evaluation processes. In the initial phase, it executes queries located in the params folder, specifically referred to as params queries. These queries don't directly calculate metrics or level2s but serve the purpose of querying arbitrary values denoted with the prefix result. These queried values can then be utilized as parameters in subsequent params and metrics queries.
 Unlike values found in project.properties, where declaration is mandatory, the results of params queries can be seamlessly employed in subsequent queries without the need for explicit declaration in the associated property files.
 
@@ -566,7 +568,7 @@ Example query result:
 
 The result of the query is specified as path in the returned json: __"hits" -> "hits" [0] -> "_source" -> "snapshotDate" = "2024-05-03"__
 
-### projects/default/metrics
+##### projects/default/metrics
 Within the folder, you'll find the metrics definitions of a project. Similar to params queries, metrics queries consist of a pair of files, namely a .properties file and a .query file. However, metrics queries go beyond params queries by computing a metric value defined by a specific formula.
 
 After execution, the computed metric value is stored in the metrics index, as defined in the project.properties file. These computed metrics are then aggregated into level2s. To ensure accurate computation, it's imperative to specify the level2s that a metric is expected to influence.
@@ -672,7 +674,7 @@ The metric (percentage of files having tolerable complexity) is then computed as
 metric=complexity.good / ( complexity.good + complexity.bad ) = 53 / ( 53 + 0 ) = 100%
 ```
 
-### projects/default/level2s.properties
+##### projects/default/level2s.properties
 The level2s.properties file serves to define level2s for computation, along with their respective properties. Unlike performing complex calculations, level2s primarily function as aggregation points for metric values.
 As level2s are subsequently aggregated into level3s, it's necessary to specify the level3s they influence, along with the weights of their influence. This specification is denoted in the format factorid.property=value. This notation ensures clarity and consistency in understanding the influence of level2s on level3s.
 
@@ -696,7 +698,7 @@ codequality.onError=set0
 
 >[Note] The onError property can be set to 'drop' or 'set0' and overwrites to setting in project.properties.
 
-### projects/default/level3s.properties
+##### projects/default/level3s.properties
 The level3s.properties file defines the level3s for a project. The parents- and weights-attribute currently have no effect, but could define an additional level of aggregation in future.
 
 ```properties
