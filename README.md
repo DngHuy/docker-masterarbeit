@@ -1,4 +1,4 @@
-# Masterarbeit - Bewertung und Analyse von Softwareartefakten - Stack
+# Masterarbeit - Analyse von Entwicklungsprozessen und Artefakten in der agilen Softwareentwicklung
 Docker Compose to start the respective services. 
 
 <!-- TOC -->
