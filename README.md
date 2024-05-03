@@ -62,6 +62,79 @@ The default configuration of _Docker Desktop for Mac_ allows mounting files from
 `/tmp` and `/var/folders` exclusively. Make sure the repository is cloned in one of those locations or follow the
 instructions from the [documentation][mac-filesharing] to add more locations.
 
+
+### .env file
+Here's the whole .env file. Create a `.env` file and copy/past this content. 
+```properties
+ELASTIC_VERSION=8.12.1
+
+## Passwords for stack users
+#
+
+# User 'elastic' (built-in)
+#
+# Superuser role, full access to cluster management and data indices.
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html
+ELASTIC_PASSWORD='elastic'
+
+# User 'kibana_system' (built-in)
+#
+# The user Kibana uses to connect and communicate with Elasticsearch.
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html
+KIBANA_SYSTEM_PASSWORD='elastic'
+
+# Users 'metricbeat_internal', 'filebeat_internal' and 'heartbeat_internal' (custom)
+#
+# The users Beats use to connect and send data to Elasticsearch.
+# https://www.elastic.co/guide/en/beats/metricbeat/current/feature-roles.html
+METRICBEAT_INTERNAL_PASSWORD=''
+FILEBEAT_INTERNAL_PASSWORD=''
+HEARTBEAT_INTERNAL_PASSWORD=''
+
+# User 'monitoring_internal' (custom)
+#
+# The user Metricbeat uses to collect monitoring data from stack components.
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/how-monitoring-works.html
+MONITORING_INTERNAL_PASSWORD=''
+
+# User 'beats_system' (built-in)
+#
+# The user the Beats use when storing monitoring information in Elasticsearch.
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html
+BEATS_SYSTEM_PASSWORD=''
+
+# Sonar-Service
+SONAR_URL=<url>
+SONAR_TOKEN=<user_token>
+SONAR_USER=admin
+SONAR_PASS=sonar
+# comma seperated project_keys
+SONAR_COMPONENT_KEYS=<keys>
+# comma seperated project_keys
+SONAR_PROJECT_KEY=<keys>
+# metrics 
+SONAR_METRIC_KEYS=comment_lines_density,complexity,violations,duplicated_lines_density,security_review_rating,sqale_index,new_technical_debt,sqale_rating,reliability_rating,classes,functions,test_success_density
+SONAR_INTERVAL_SECONDS=10m
+
+# Elasticsearch
+ELASTICSEARCH_IP=elasticsearch
+ELASTICSEARCH_APIKEY=<api_key>
+
+# Eval-Service
+EVAL_INTERVAL=10m
+
+# Gitlab-Service
+# GITLAB_TOKEN=796963
+GITLAB_URL=<url>
+GITLAB_USERNAME=<username>
+GITLAB_PASSWORD=<password>
+GITLAB_WEBHOOK=<webhook_secret>
+
+# Sonarqube & Database
+SONAR_JDBC_PASSWORD=sonar
+POSTGRES_PASSWORD=sonar
+```
+
 ### Bringing up the stack
 Clone this repository onto the Docker host that will run the stack with the command below:
 
@@ -144,6 +217,9 @@ in:
 
 Navigate to `Management > Stack Management > Kibana > Saved Objects`.
 Click on `Import` and choose the `saved_objects.njson` file from the root directory of this folder. Afterwards all data views, dashboards and visualizations should have been imported.
+
+#### Create the API Key for Elasticsearch
+To manage API keys, open the main menu, then click Stack Management > Security > API Keys.
 
 ### Setup for SonarQube
 The username is defined in the compose file for the respective service. The password for the user is inside the `.env` file.
@@ -641,6 +717,7 @@ args:
 ```
 
 ## Source
+[Elasticsearch API Keys](https://www.elastic.co/guide/en/kibana/current/api-keys.html)
 [SonarQube Java Test Coverage](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/test-coverage/java-test-coverage/)
 [Q-Rapids-Eval](https://github.com/q-rapids/qrapids-eval)
 [Docker-ELK](https://github.com/deviantony/docker-elk)
