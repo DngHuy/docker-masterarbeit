@@ -2,7 +2,7 @@
 Docker Compose to start the respective services. 
 
 <!-- TOC -->
-* [Masterarbeit - Bewertung und Analyse von Softwareartefakten - Stack](#masterarbeit---bewertung-und-analyse-von-softwareartefakten---stack)
+* [Masterarbeit - Analyse von Entwicklungsprozessen und Artefakten in der agilen Softwareentwicklung](#masterarbeit---analyse-von-entwicklungsprozessen-und-artefakten-in-der-agilen-softwareentwicklung)
   * [Local Testing](#local-testing)
   * [Requirements](#requirements)
     * [Host setup](#host-setup)
