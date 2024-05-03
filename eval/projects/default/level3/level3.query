@@ -9,11 +9,11 @@
         {  "term": { "project" : "{{project}}" } },
         {  "term": { "targetType": "{{targetType}}" } }
       ],
-      "should": [
-        {  "term": { "targetId": "{{targetId}}" } },
-        {  "term": { "targetId.keyword": "{{targetId}}" } }
-       ],
-      "minimum_should_match": 1
+     "should": [
+       {  "term": { "targetId": "{{targetId}}" } },
+       {  "term": { "targetId.keyword": "{{targetId}}" } }
+     ],
+     "minimum_should_match": 1
     }
   },
   
