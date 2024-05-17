@@ -259,8 +259,9 @@ It's defined as `bcKey`, `SONAR_COMPONENT_KEYS` or `SONAR_PROJECT_KEY`.
 ### Setup for Gitlab-Service
 
 #### Generate Webhook Secret 
-In the web UI navigate to: In your project or group, on the left sidebar, select Settings > Webhooks > Add new webhook.
-Enter the url, name, description and secret token. In the trigger section select the checkbox for which the webhook should be triggered (push, issue, comment, merge request, job event). 
+In the web UI navigate to: Your project or group, on the left sidebar, select Settings > Webhooks > Add new webhook.  
+Enter the url, name, description and secret token.  
+In the trigger section select the checkbox for which the webhook should be triggered (push, issue, comment, merge request, job event). 
 
 Set the required .env variables in the `.env` file. The `GITLAB_TOKEN` variable is not used yet, the gitlab-service is currently using the user:password to authenticate with Gitlab.
 
