@@ -66,7 +66,7 @@ instructions from the [documentation][mac-filesharing] to add more locations.
 
 
 ### .env file
-Here's the whole .env file. Create a `.env` file and copy/past this content. 
+Here's the whole .env file. Create a `.env` file and copy/past this content. Empty fields can be left empty and the values int the <VALUE> will be explained in the respective section of the service. 
 ```properties
 ELASTIC_VERSION=8.12.1
 
@@ -130,6 +130,7 @@ EVAL_INTERVAL=10m
 GITLAB_URL=<url>
 GITLAB_USERNAME=<username>
 GITLAB_PASSWORD=<password>
+# comma seperated webhook secrets 
 GITLAB_WEBHOOK=<webhook_secret>
 
 # Sonarqube & Database
@@ -141,7 +142,11 @@ POSTGRES_PASSWORD=sonar
 Clone this repository onto the Docker host that will run the stack with the command below:
 
 ```sh
-git@github.com:DngHuy/docker-masterarbeit.git
+git clone git@github.com:DngHuy/docker-masterarbeit.git
+```
+Or for HTTPS:
+```sh
+git clone https://github.com/DngHuy/docker-masterarbeit.git
 ```
 
 Then, initialize the Elasticsearch users and groups required by docker-elk by executing the command:
@@ -252,12 +257,18 @@ If you directly create a project in the UI, you'll have to set a project key. Th
 It's defined as `bcKey`, `SONAR_COMPONENT_KEYS` or `SONAR_PROJECT_KEY`.
 
 ### Setup for Gitlab-Service
+
+#### Generate Webhook Secret 
+In the web UI navigate to: In your project or group, on the left sidebar, select Settings > Webhooks > Add new webhook.
+Enter the url, name, description and secret token. In the trigger section select the checkbox for which the webhook should be triggered (push, issue, comment, merge request, job event). 
+
 Set the required .env variables in the `.env` file. The `GITLAB_TOKEN` variable is not used yet, the gitlab-service is currently using the user:password to authenticate with Gitlab.
 
 ```properties
 GITLAB_URL=<url>
 GITLAB_USERNAME=<username>
 GITLAB_PASSWORD=<password>
+# comma seperated webhook secrets
 GITLAB_WEBHOOK=<webhook_secret>
 ```
 
