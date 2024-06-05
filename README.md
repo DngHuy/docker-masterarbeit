@@ -149,21 +149,17 @@ Or for HTTPS:
 git clone https://github.com/DngHuy/docker-masterarbeit.git
 ```
 
-Then, initialize the Elasticsearch users and groups required by docker-elk by executing the command:
+Then, initialize the Elasticsearch users and groups required by docker by executing the command:
 
 ```sh
 docker compose up setup
 ```
 
-If everything went well and the setup completed without error, start the other stack components:
+If everything went well and the setup completed without error, start kibana 
 
 ```sh
-docker compose up
+docker compose up kibana -d
 
-If everything went well and the setup completed without error, start the other stack components:
-
-```sh
-docker compose up
 ```
 
 Give Kibana a bit to initialize. The Kibana web UI can be accessed by going to  <http://localhost:5601>, use the following (default) credentials to log in:
