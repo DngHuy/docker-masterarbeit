@@ -254,6 +254,12 @@ It's defined as `bcKey`, `SONAR_COMPONENT_KEYS` or `SONAR_PROJECT_KEY`.
 
 ### Setup for Gitlab-Service
 
+> [**Note**] The evaluation of the scrum sprint related metrics requires some specific labels to be set.   
+> To track if an issue is / or was part of a sprint the label [SPRINT] should be used.   
+> To track the current sprint the label [CURRENT] should be used and removed if the issue is not part of the current sprint anymore.  
+> To track the story points estimation the label [SP:<estimated_story_points>] should be used (e.g. SP:5).    
+> The name for the columns (e.g. open, progress or closed) of the issue board can be set in the `project.properties` file of the respective project. 
+
 #### Generate Webhook Secret 
 In the web UI navigate to: Your project or group, on the left sidebar, select Settings > Webhooks > Add new webhook.  
 Enter the url, name, description and secret token.  
@@ -274,7 +280,7 @@ The following command starts the gitlab-service.
 docker-compose up -d gitlab
 ```
 
-The Gitlab-Service will fetch all all Gitlab to this date and listen to webhook events. Received data will be inserted into elasticsearch.
+The Gitlab-Service will fetch all Gitlab to this date and listen to webhook events. Received data will be inserted into elasticsearch.
 
 ### Setup for Sonar-Service
 This service fetches data from the before initialised sonarqube-container and inserts them into the elasticsearch. The sonar-service periodically fetches data and inserts them into elasticsearch. The interval can be defined with the `SONAR_INTERVAL_SECONDS` property in the `.env` file.
