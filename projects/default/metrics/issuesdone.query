@@ -25,7 +25,7 @@
               "must": [
                 {
                   "query_string": {
-                    "query": "(labels:/done/ OR labels:/fertig/ ) AND state:closed ",
+                    "query": "(labels:{{donelabel}} ) AND state:closed ",
                     "analyze_wildcard": true
                   }
                 }
