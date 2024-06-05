@@ -158,7 +158,7 @@ docker compose up setup
 If everything went well and the setup completed without error, start kibana 
 
 ```sh
-docker compose up kibana -d
+docker compose up -d kibana
 
 ```
 
@@ -208,7 +208,7 @@ reset the passwords of all aforementioned Elasticsearch users to random secrets.
 1. Restart Kibana to re-connect to Elasticsearch using the new passwords
 
     ```sh
-    docker-compose up -d kibana
+    docker compose up -d kibana
     ```
 
 #### Injecting data
@@ -232,7 +232,7 @@ POSTGRES_PASSWORD=<password>
 ```
 The following command starts the sonarqube server and the dependent postgresql database.
 ```sh
-docker-compose up -d sonarqube
+docker compose up -d sonarqube
 ```
 
 Give Sonarqube about a minute to initialize, then access the Sonarqube web UI by opening <http://localhost:9000> in a web
@@ -277,7 +277,7 @@ GITLAB_WEBHOOK=<webhook_secret>
 
 The following command starts the gitlab-service.
 ```sh
-docker-compose up -d gitlab
+docker compose up -d gitlab
 ```
 
 The Gitlab-Service will fetch all Gitlab to this date and listen to webhook events. Received data will be inserted into elasticsearch.
@@ -380,7 +380,7 @@ args:
 
 The following command starts the sonar-service.
 ```sh
-docker-compose up -d sonar
+docker compose up -d sonar
 ```
 
 ### Setup for Eval-Service
