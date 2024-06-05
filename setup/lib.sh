@@ -86,7 +86,7 @@ function wait_for_builtin_users {
 			if [[ "$line" =~ _reserved.+true ]]; then
 				(( num_users++ ))
 			fi
-		done < <(curl "${args[@]}"; printf '%s' "$?")
+    done < <(curl "${args[@]}"; printf '%s' "$?")
 
 		if ((exit_code)); then
 			result=$exit_code

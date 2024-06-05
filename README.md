@@ -152,18 +152,18 @@ git clone https://github.com/DngHuy/docker-masterarbeit.git
 Then, initialize the Elasticsearch users and groups required by docker-elk by executing the command:
 
 ```sh
-docker-compose up setup
+docker compose up setup
 ```
 
 If everything went well and the setup completed without error, start the other stack components:
 
 ```sh
-docker-compose up
+docker compose up
 
 If everything went well and the setup completed without error, start the other stack components:
 
 ```sh
-docker-compose up
+docker compose up
 ```
 
 Give Kibana a bit to initialize. The Kibana web UI can be accessed by going to  <http://localhost:5601>, use the following (default) credentials to log in:
@@ -193,11 +193,11 @@ reset the passwords of all aforementioned Elasticsearch users to random secrets.
    of them.
 
     ```sh
-    docker-compose exec elasticsearch bin/elasticsearch-reset-password --batch --user elastic
+    docker compose exec elasticsearch bin/elasticsearch-reset-password --batch --user elastic
     ```
 
     ```sh
-    docker-compose exec elasticsearch bin/elasticsearch-reset-password --batch --user kibana_system
+    docker compose exec elasticsearch bin/elasticsearch-reset-password --batch --user kibana_system
     ```
 
 1. Replace usernames and passwords in configuration files
