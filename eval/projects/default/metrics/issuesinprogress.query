@@ -25,7 +25,7 @@
               "must": [
                 {
                   "query_string": {
-                    "query": "(labels:/bearbeitung/ OR labels:/work/ OR labels:/progress/ OR labels:/arbeit/) AND state:opened",
+                    "query": "(labels:/{{progresslabel}}) AND state:opened",
                     "analyze_wildcard": true
                   }
                 }

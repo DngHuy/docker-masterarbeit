@@ -14,7 +14,7 @@
           "must": [
             {
               "query_string": {
-                "query": "description:/wer/ OR description:/akzeptanzkriterien/ ",
+                "query": "{{description}}",
                 "analyze_wildcard": true
               }
             }

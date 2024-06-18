@@ -11,7 +11,7 @@
   "aggs": {
     "total_docs": {
       "cardinality": {
-        "field": "id.keyword"
+        "field": "id"
       }
     },
     "accurately_estimated_stories": {
