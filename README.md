@@ -151,7 +151,7 @@ JIRA_PASSWORD=<password>
 JIRA_PROJECT=<project_name>
 JIRA_API_KEY=<api_key>
 # add the time unit (s, m, h) after the number
-JIRA_INTERVAL_SECONDS=240m
+JIRA_INTERVAL=240m
 
 # Sonarqube & Database
 SONAR_JDBC_PASSWORD=sonar
