@@ -116,14 +116,15 @@ SONAR_COMPONENT_KEYS=<keys>
 SONAR_PROJECT_KEY=<keys>
 # metrics 
 SONAR_METRIC_KEYS=comment_lines_density,complexity,violations,duplicated_lines_density,security_review_rating,sqale_index,new_technical_debt,sqale_rating,reliability_rating,classes,functions,test_success_density
-SONAR_INTERVAL_SECONDS=10m
+# add the time unit (s, m, h) after the number
+SONAR_INTERVAL_SECONDS=240m
 
 # Elasticsearch
 ELASTICSEARCH_IP=elasticsearch
 ELASTICSEARCH_APIKEY=<api_key>
 
 # Eval-Service
-EVAL_INTERVAL=10m
+EVAL_INTERVAL=540m
 
 # Gitlab-Service
 # GITLAB_TOKEN=796963
@@ -132,6 +133,25 @@ GITLAB_USERNAME=<username>
 GITLAB_PASSWORD=<password>
 # comma seperated webhook secrets 
 GITLAB_WEBHOOK=<webhook_secret>
+
+# Github-Service
+# add the time unit (s, m, h) after the number
+GITHUB_INTERVAL=120m
+QUARKUS_GITHUB_APP_APP_ID=<app_id>
+QUARKUS_GITHUB_APP_INSTALLATION_ID=<installation_id>
+QUARKUS_GITHUB_APP_APP_NAME=<name>
+# QUARKUS_GITHUB_APP_WEBHOOK_PROXY_URL=<e.g._https://smee.io/>
+QUARKUS_GITHUB_APP_WEBHOOK_SECRET=<secret>
+QUARKUS_GITHUB_APP_PRIVATE_KEY='<private_key_in_single_quotes>'
+
+# Jira-Service
+JIRA_URL=<url>
+JIRA_USER=<jira_user_email>
+JIRA_PASSWORD=<password>
+JIRA_PROJECT=<project_name>
+JIRA_API_KEY=<api_key>
+# add the time unit (s, m, h) after the number
+JIRA_INTERVAL_SECONDS=240m
 
 # Sonarqube & Database
 SONAR_JDBC_PASSWORD=sonar
