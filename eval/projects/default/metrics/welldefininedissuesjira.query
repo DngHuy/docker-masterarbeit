@@ -1,0 +1,23 @@
+{
+  "size": 0,
+  "query": {
+    "bool" : {
+      "must" : [
+        { "term" : { "projectKey" : "{{projectKey}}" } },
+        { "range" : { "created" : { "from" : "now-3000d" } } }
+      ]
+    }
+  },
+  "aggs" : {
+    "welldefined" : {
+      "filter" : {
+        "bool" : {
+          "must" : [
+            { "exists" : { "field" : "dueDate" } },
+            { "exists" : { "field" : "description" } }
+          ]
+        }
+      }
+    }
+  }
+}

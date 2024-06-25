@@ -1,0 +1,16 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must" : [
+          {"term" : { "projectKey": "{{projectKey}}" } },
+          {"terms" : { "status" : {{#toJson}}status.unresolved{{/toJson}}  } }
+        ]
+    }
+  },
+  "aggs": {
+    "openbugs": {
+      "filter": { "terms" : {"issueType" : {{#toJson}}bug.issueTypes{{/toJson}} } }
+    }
+  }
+}

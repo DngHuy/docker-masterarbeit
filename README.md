@@ -155,6 +155,8 @@ JIRA_INTERVAL=240m
 
 # Sonarqube & Database
 SONAR_JDBC_PASSWORD=sonar
+POSTGRES_DB=sonar
+POSTGRES_USER=sonar
 POSTGRES_PASSWORD=sonar
 ```
 

@@ -1,0 +1,20 @@
+{
+  "size" : 0,
+  "query": {
+    "bool": {
+      "must" : [
+      	{ "term" : { "bcKey.keyword" : "{{bcKey}}" } },
+        { "term" : { "metric" : "coverage"} },
+        { "term" : { "qualifier" : "trk" }},
+        { "term": { "projectName.keyword": { "value": "{{project}}", "case_insensitive": true } } }
+      ]
+    }
+  },
+  "aggs": {
+       "values": {
+      "sum": {
+        "field": "floatValue"
+      }
+    }
+  }
+}
