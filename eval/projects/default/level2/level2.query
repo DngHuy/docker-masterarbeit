@@ -6,8 +6,8 @@
     "bool": {
       "must": [
         {  "term": { "evaluationDate" : "{{evaluationDate}}" } },
-        {  "term": { "projectName" : "{{project}}" } },
-        {  "term": { "targetType": "{{targetType}}" } }
+        {  "term": { "projectName.keyword" : "{{project}}" } },
+        {  "term": { "targetType.keyword": "{{targetType}}" } }
       ],
      "should": [
        {  "term": { "targetId": "{{targetId}}" } },
