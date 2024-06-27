@@ -127,7 +127,8 @@ ELASTICSEARCH_APIKEY=<api_key>
 EVAL_INTERVAL=540m
 
 # Gitlab-Service
-# GITLAB_TOKEN=796963
+# currently unused but still needed, set it to some random value
+GITLAB_TOKEN=796963
 GITLAB_URL=<url>
 GITLAB_USERNAME=<username>
 GITLAB_PASSWORD=<password>
