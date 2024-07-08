@@ -75,8 +75,6 @@ services:
     platform: linux/amd64
     build:
       context: sonar/
-      args:
-        evaluationDate: 2024-03-25
     environment:
       SONAR_URL: ${SONAR_URL:-}
       SONAR_TOKEN: ${SONAR_TOKEN:-}
@@ -86,9 +84,9 @@ services:
       SONAR_PROJECT_KEY: ${SONAR_PROJECT_KEY:-}
       SONAR_METRIC_KEYS: ${SONAR_METRIC_KEYS:-}
       SONAR_INTERVAL_SECONDS: ${SONAR_INTERVAL_SECONDS:-}
-      ELASTICSEARCH_APIKEY: ${ELASTICSEARCH_APIKEY:-}
-      ELASTICSEARCH_IP: ${ELASTICSEARCH_IP:-}
-      ELASTICSEARCH_PORT: 9200
+      SONAR_SNAPSHOT_DATE: ${SONAR_SNAPSHOT_DATE:-}
+    env_file:
+      - common.env
     restart: unless-stopped
 
   gitlab:
@@ -100,9 +98,8 @@ services:
       GITLAB_USERNAME: ${GITLAB_USERNAME:-}
       GITLAB_PASSWORD: ${GITLAB_PASSWORD:-}
       GITLAB_WEBHOOK: ${GITLAB_WEBHOOK:-}
-      ELASTICSEARCH_APIKEY: ${ELASTICSEARCH_APIKEY:-}
-      ELASTICSEARCH_IP: ${ELASTICSEARCH_IP:-}
-      ELASTICSEARCH_PORT: 9200
+    env_file:
+      - common.env
     restart: unless-stopped
   
   github:
@@ -116,6 +113,8 @@ services:
       QUARKUS_GITHUB_APP_APP_NAME:  ${QUARKUS_GITHUB_APP_APP_NAME:-}
       QUARKUS_GITHUB_APP_WEBHOOK_SECRET: ${QUARKUS_GITHUB_APP_WEBHOOK_SECRET:-}
       QUARKUS_GITHUB_APP_PRIVATE_KEY: ${QUARKUS_GITHUB_APP_PRIVATE_KEY:-}
+    env_file:
+      - common.env
     restart: unless-stopped
   
   jira:
@@ -128,9 +127,8 @@ services:
       JIRA_PROJECT: ${JIRA_PROJECT:-}
       JIRA_API_KEY: ${JIRA_API_KEY:-}
       JIRA_INTERVAL: ${JIRA_INTERVAL:-}
-      ELASTICSEARCH_APIKEY: ${ELASTICSEARCH_APIKEY:-}
-      ELASTICSEARCH_IP: ${ELASTICSEARCH_IP:-}
-      ELASTICSEARCH_PORT: 9200
+    env_file:
+      - common.env
     restart: unless-stopped
 
   eval:
@@ -141,9 +139,8 @@ services:
     #      - "evaluationDate 2024-03-25"
     environment:
       EVAL_INTERVAL: ${EVAL_INTERVAL:-}
-      ELASTICSEARCH_APIKEY: ${ELASTICSEARCH_APIKEY:-}
-      ELASTICSEARCH_IP: ${ELASTICSEARCH_IP:-}
-      ELASTICSEARCH_PORT: 9200
+    env_file:
+      - common.env
     restart: unless-stopped
 
   sonarqube:

@@ -118,6 +118,8 @@ SONAR_PROJECT_KEY=<keys>
 SONAR_METRIC_KEYS=comment_lines_density,complexity,violations,duplicated_lines_density,security_review_rating,sqale_index,new_technical_debt,sqale_rating,reliability_rating,classes,functions,test_success_density
 # add the time unit (s, m, h) after the number
 SONAR_INTERVAL_SECONDS=240m
+#set snapshotDate manually, format: YYYY-MM-DD
+SONAR_SNAPSHOT_DATE=_null_
 
 # Elasticsearch
 ELASTICSEARCH_IP=elasticsearch
