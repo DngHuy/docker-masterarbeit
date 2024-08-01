@@ -64,6 +64,14 @@ The default configuration of _Docker Desktop for Mac_ allows mounting files from
 `/tmp` and `/var/folders` exclusively. Make sure the repository is cloned in one of those locations or follow the
 instructions from the [documentation][mac-filesharing] to add more locations.
 
+### common.env file
+Contains the common key/value pairs which are used for all data services.
+```properties
+# Elasticsearch
+ELASTICSEARCH_IP=elasticsearch
+ELASTICSEARCH_APIKEY=<api_key>
+ELASTICSEARCH_PORT=9200
+```
 
 ### .env file
 Here's the whole .env file. Create a `.env` file and copy/past this content. Empty fields can be left empty and the values int the <VALUE> will be explained in the respective section of the service. 
@@ -120,10 +128,6 @@ SONAR_METRIC_KEYS=comment_lines_density,complexity,violations,duplicated_lines_d
 SONAR_INTERVAL_SECONDS=240m
 #set snapshotDate manually, format: YYYY-MM-DD
 SONAR_SNAPSHOT_DATE=_null_
-
-# Elasticsearch
-ELASTICSEARCH_IP=elasticsearch
-ELASTICSEARCH_APIKEY=<api_key>
 
 # Eval-Service
 EVAL_INTERVAL=540m
